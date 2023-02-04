@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: sample-api
+  version: v0.1
+tags:
+  - name: sample-api
+paths:
+  /samples:
+    get:
+      tags:
+        - sample-controller
+      operationId: fetchSamples
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: 'sample-api-schema.yaml#/components/schemas/sample'
+        '204':
+          description: 'No Content'
+    post:
+      tags:
+        - sample-controller
+      operationId: saveSample
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'sample-api-schema.yaml#/components/schemas/sample'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: 'sample-api-schema.yaml#/components/schemas/sample'
+        '400':
+          description: 'Bad Request'
+        '404':
+          description: 'Not Found'

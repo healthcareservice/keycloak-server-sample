@@ -1,0 +1,29 @@
+components:
+  schemas:
+    sample:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        fullName:
+          type: string
+        otherSample:
+          type: array
+          items:
+            $ref: '#/components/schemas/otherSample'
+    otherSample:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        fullName:
+          type: string
+        otherSampleType:
+          $ref: '#/components/schemas/otherSampleType'
+    otherSampleType:
+      type: string
+      enum:
+        - HELLO
+        - WORLD
