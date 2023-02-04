@@ -5,11 +5,11 @@ info:
 tags:
   - name: sample-api
 paths:
-  /samples:
+  /samples/called-by-webclient:
     get:
       tags:
         - sample-controller
-      operationId: fetchSamples
+      operationId: calledByWebclient
       responses:
         '200':
           description: OK
@@ -19,24 +19,15 @@ paths:
                 $ref: 'sample-api-schema.yaml#/components/schemas/sample'
         '204':
           description: 'No Content'
-    post:
+  /samples/hello-world:
+    get:
       tags:
         - sample-controller
-      operationId: saveSample
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: 'sample-api-schema.yaml#/components/schemas/sample'
+      operationId: helloWorld
       responses:
         '200':
-          description: Ok
+          description: OK
           content:
             application/json:
               schema:
-                $ref: 'sample-api-schema.yaml#/components/schemas/sample'
-        '400':
-          description: 'Bad Request'
-        '404':
-          description: 'Not Found'
+                type: string
